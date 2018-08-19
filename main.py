@@ -1,11 +1,7 @@
-from tkinter import Tk, Button, Frame, Entry, END
+import tkinter
 
-class ABC(Frame):
-    def __init__(self, master=None):
-        Frame.__init__(self, master)
+root = tkinter.Tk()
+root.geometry("300x300")
+root.title("Meerkat")
 
-root = Tk()
-app = ABC(master=root)
-app.master.title("Meerkat")
-app.mainloop()
-root.destroy()
+root.mainloop()

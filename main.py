@@ -4,10 +4,10 @@ from tkinter import *
 from tkinter.filedialog import askdirectory
 import os, sys
 
-#
+# bordel de la fenêtre
 root = Tk()
 root.title("Meerkat")
-root.geometry("300x300")
+root.geometry("500x500")
 
 # commande inutile
 def nope():
@@ -15,16 +15,20 @@ def nope():
    button = Button(filewin, text="nope")
    button.pack()
 
-"""# selection du dossier WIP
+# selection du dossier
 def selection():
+    global folder
     folder = askdirectory()
-    path = str(folder) """
 
 # scan
 def scan():
+    try:
+        folder
+    except NameError:
+        selection()
     var_label = StringVar()     #Zone de communication avec objet TkInter/Label
     label=Label(root,textvariable=var_label).pack() # Association Label et StringVar
-    files = os.listdir(path)
+    files = os.listdir(folder)
     for name in files:
         print(name)
         var_label.set(name)
@@ -32,11 +36,9 @@ def scan():
 # menu
 menubar = Menu(root)
 filemenu = Menu(menubar, tearoff = 0)
-filemenu.add_command(label="Selection du dossier", command = selection)
 filemenu.add_command(label="Scan", command = scan)
-
 filemenu.add_separator()
-
+filemenu.add_command(label = "Selectioner un dossier", command = selection)
 filemenu.add_command(label = "Quitter", command = root.quit)
 menubar.add_cascade(label = "Options", menu = filemenu)
 editmenu = Menu(menubar, tearoff=0)

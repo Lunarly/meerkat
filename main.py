@@ -32,6 +32,8 @@ def scan():
     for name in files:
         print(name)
         var_label.set(name)
+        var_label=StringVar()
+        label=Label(root,textvariable=var_label).pack()
 
 # menu
 menubar = Menu(root)
